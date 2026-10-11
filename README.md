@@ -49,7 +49,7 @@ To sign in (one time, upstream bug workaround):
 |---|---|---|
 | ZCode desktop app | once | Install it, sign in once, then quit. This provisions the working credential (see the note at the top and [feedback#1001](https://github.com/zai-org/feedback/issues/1001)). Not needed to run or use the CLI afterwards. Expect to need it again if you switch accounts or when the credential needs renewing. |
 
-The install itself needs only Node.js and network: git, curl, pnpm, corepack and even the OS `tar` command are not needed: downloads use the Node.js built-in fetch, and pnpm 10.33.2 (the upstream pin) plus a pure-JS tar extractor are installed in isolation under `~/.zcode-cli/tools`. Your global environment is never modified.
+The install itself needs only Node.js and network. git, curl, pnpm, corepack and even the OS `tar` command are not needed either: everything else the build requires is installed automatically in isolation under `~/.zcode-cli/tools`, and your global environment is never modified.
 
 On a fresh macOS, if native dependency steps complain, install Xcode Command Line Tools with `xcode-select --install`.
 
@@ -127,7 +127,7 @@ Layout after install:
   INSTALLED              # installed tag, e.g. v3.15.1
   LANG                   # message language (en or ko)
   src/                   # official source and build output
-  tools/                 # isolated pnpm
+  tools/                 # isolated build tooling (installed automatically)
   bin/                   # install.sh copy, update checker
   cache/                 # downloaded tarballs
 ~/.local/bin/zcode           # wrapper: daily notice, then execs the official binary

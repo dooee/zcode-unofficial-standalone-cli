@@ -49,7 +49,7 @@
 |---|---|---|
 | ZCode 데스크톱 앱 | 1회 | 설치 후 한 번 로그인하고 종료하면 동작하는 credential이 발급됩니다 (상단 안내 및 [feedback#1001](https://github.com/zai-org/feedback/issues/1001) 참고). 이후 CLI 실행과 사용에는 필요 없습니다. 계정을 바꾸거나 credential 갱신이 필요할 때는 다시 필요할 것으로 예상됩니다. |
 
-설치 과정 자체는 Node.js와 네트워크만 있으면 됩니다. git, curl, pnpm, corepack은 물론 OS의 `tar` 명령까지 필요 없습니다. 다운로드는 Node.js 내장 fetch를 쓰고, pnpm 10.33.2(업스트림 고정 버전)과 순수 JS tar 추출기는 `~/.zcode-cli/tools`에 격리 설치됩니다. 전역 환경은 절대 수정하지 않습니다.
+설치 과정 자체는 Node.js와 네트워크만 있으면 됩니다. git, curl, pnpm, corepack은 물론 OS의 `tar` 명령까지 직접 준비할 필요가 없습니다. 빌드에 필요한 나머지는 모두 `~/.zcode-cli/tools`에 자동으로 격리 설치되고, 전역 환경은 절대 수정하지 않습니다.
 
 새로 세팅한 macOS에서 네이티브 의존성 단계가 실패하면 `xcode-select --install` 로 Xcode Command Line Tools를 설치하세요.
 
@@ -127,7 +127,7 @@ zcode -p "안녕"  # headless 원샷
   INSTALLED              # 설치된 태그, 예: v3.15.1
   LANG                   # 메시지 언어 (en 또는 ko)
   src/                   # 공식 소스와 빌드 결과
-  tools/                 # 격리된 pnpm
+  tools/                 # 격리된 빌드 도구 (자동 설치)
   bin/                   # install.sh 사본, 업데이트 확인기
   cache/                 # 내려받은 tarball
 ~/.local/bin/zcode           # 래퍼: 일일 알림 후 공식 바이너리 실행
