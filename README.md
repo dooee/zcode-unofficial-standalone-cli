@@ -145,6 +145,27 @@ Builds happen in a fresh directory that is swapped in only after success, so a f
 
 ## Troubleshooting
 
+**`zcode -p` fails with 404 "Not Found" (standalone CLI)**
+
+Server side regression observed from 2026-10-13: the standalone CLI rewrites coding plan requests from `api.z.ai/api/anthropic` to the official gateway at `zcode.z.ai/api/v1/ultra-zai/...`, and that gateway currently returns 404 for any request carrying the `metadata` field. The CLI always sends metadata, so every model call fails, while the identical request sent directly to `api.z.ai` succeeds. The desktop app is unaffected because it does not use this rewrite.
+
+Workaround: point the provider baseUrl at the same host with a trailing dot. The gateway rewrite matches hostnames by exact string, so `api.z.ai.` skips the rewrite but resolves to the same endpoint:
+
+```bash
+node -e '
+const fs = require("fs"), os = require("os"), p = os.homedir() + "/.zcode/v2/provider_config.json";
+const d = JSON.parse(fs.readFileSync(p, "utf8"));
+d.config.providerConfigRules.providerRules = [
+  { providerId: "account:zai-individual-coding-plan",
+    config: { api: { baseUrl: "https://api.z.ai./api/anthropic" } } }
+];
+fs.writeFileSync(p, JSON.stringify(d, null, 2));
+console.log("baseUrl override applied");
+'
+```
+
+Remove the rule again once Z.AI fixes the gateway.
+
 **`zcode -p` fails with `Unauthorized` / 401**
 
 Two distinct causes share this symptom:

@@ -145,6 +145,27 @@ zcode -p "안녕"  # headless 원샷
 
 ## 트러블슈팅
 
+**`zcode -p` 실행 시 404 "Not Found" (standalone CLI)**
+
+2026-10-13부터 관측된 서버 측 회귀: standalone CLI가 코딩 플랜 요청을 `api.z.ai/api/anthropic`에서 공식 게이트웨이 `zcode.z.ai/api/v1/ultra-zai/...`로 재작성하는데, 이 게이트웨이가 현재 `metadata` 필드가 포함된 요청을 404로 거부합니다. CLI는 항상 metadata를 보내므로 모든 모델 호출이 실패하고, 동일한 요청을 `api.z.ai`로 직접 보내면 성공합니다. 데스크톱 앱은 이 재작성을 쓰지 않아 영향이 없습니다.
+
+우회: provider baseUrl을 같은 호스트에 점 하나를 붙여 지정하세요. 게이트웨이 재작성은 호스트명을 정확한 문자열로 비교하므로 `api.z.ai.` 는 재작성을 건너뛰면서 같은 엔드포인트로 해석됩니다:
+
+```bash
+node -e '
+const fs = require("fs"), os = require("os"), p = os.homedir() + "/.zcode/v2/provider_config.json";
+const d = JSON.parse(fs.readFileSync(p, "utf8"));
+d.config.providerConfigRules.providerRules = [
+  { providerId: "account:zai-individual-coding-plan",
+    config: { api: { baseUrl: "https://api.z.ai./api/anthropic" } } }
+];
+fs.writeFileSync(p, JSON.stringify(d, null, 2));
+console.log("baseUrl 오버라이드 적용");
+'
+```
+
+Z.AI가 게이트웨이를 수정하면 이 규칙을 제거하세요.
+
 **`zcode -p` 실행 시 `Unauthorized` / 401**
 
 같은 증상에 두 가지 원인이 있습니다:
