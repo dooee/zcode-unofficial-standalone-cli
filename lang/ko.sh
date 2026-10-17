@@ -1,4 +1,4 @@
-# zcode-unofficial-standalone-cli 한국어 메시지.
+# zcode-cli-install-helper 한국어 메시지.
 # install.sh 가 로드합니다. 변수 할당만 포함하고 로직은 넣지 마세요.
 # 값에는 %s 같은 printf 형식 지시자가 포함될 수 있습니다.
 

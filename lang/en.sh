@@ -1,4 +1,4 @@
-# English messages for zcode-unofficial-standalone-cli.
+# English messages for zcode-cli-install-helper.
 # Loaded by install.sh. Only variable assignments belong here: no logic.
 # Values may contain printf-style placeholders such as %s.
 

@@ -1,12 +1,12 @@
-# ZUSC: zcode-unofficial-standalone-cli
+# zcode-cli-install-helper
 
-**Z**code **U**nofficial **S**tandalone **C**LI 의 약자.
+Z.AI의 오픈소스 **공식 ZCode CLI**를 공식 소스에서 빌드해 `zcode` 명령으로 설치해 주는 커뮤니티 설치 도우미입니다. 데스크톱 앱도, 포크도 아닙니다.
 
 ![ZCode CLI 시작 화면, GLM Coding Plan 계정으로 GLM-5.3 실행](images/tui-welcome.png)
 
-> **비공식 프로젝트입니다.** Z.AI와 제휴하지 않았으며 공식 배포 도구가 아닙니다.
+> **독립 프로젝트입니다.** 설치되는 `zcode`는 [zai-org/ZCode](https://github.com/zai-org/ZCode) (Apache-2.0)를 공식 빌드 명령으로 빌드한 공식 CLI 그대로입니다. 이 설치 도우미만 커뮤니티 프로젝트이며, Z.AI와 제휴하거나 보증받지 않았습니다.
 
-[ zai-org/ZCode ](https://github.com/zai-org/ZCode) (Apache-2.0)의 공식 소스를 공식 빌드 명령으로 빌드해서 ZCode CLI/TUI를 `zcode` 명령으로 설치합니다. ZCode는 Z.ai GLM 모델(GLM-5.3 등)을 위한 터미널 하네스이며, GLM Coding Plan 구독으로 그대로 사용할 수 있습니다. Z.AI는 현재 ZCode를 데스크톱 앱으로만 배포하며, CLI 소스는 공개되어 있지만 모노레포 빌드 지식이 필요합니다. 이 도구가 그 간극을 메웁니다.
+ZCode는 Z.ai GLM 모델(GLM-5.3 등)을 위한 터미널 하네스이며, GLM Coding Plan 구독으로 그대로 사용할 수 있습니다. Z.AI는 현재 이를 데스크톱 앱으로만 배포하며, CLI 소스는 공개되어 있지만 모노레포 빌드 지식이 필요합니다. 이 도우미가 그 간극을 메웁니다.
 
 [English README (README.md)](../README.md)
 
@@ -71,16 +71,16 @@
 git이 있는 경우:
 
 ```bash
-git clone https://github.com/dooee/zcode-unofficial-standalone-cli.git
-cd zcode-unofficial-standalone-cli
+git clone https://github.com/dooee/zcode-cli-install-helper.git
+cd zcode-cli-install-helper
 ./install.sh
 ```
 
 git 없이 (ZIP 내려받기): GitHub에서 이 저장소를 열고 초록색 **Code** 버튼의 **Download ZIP** 으로 내려받은 뒤 압축을 풀고 실행합니다 (`unzip` 은 macOS에 기본 포함, 다른 압축 도구도 가능):
 
 ```bash
-unzip zcode-unofficial-standalone-cli-main.zip
-cd zcode-unofficial-standalone-cli-main
+unzip zcode-cli-install-helper-main.zip
+cd zcode-cli-install-helper-main
 ./install.sh
 ```
 
@@ -118,7 +118,7 @@ zcode -p "안녕"  # headless 원샷
 두 가지 방식이 있고, 둘 다 알림이 먼저이며 실행은 요청할 때만 합니다.
 
 - `zcode-update` 는 설치된 태그와 최신 공식 태그를 비교해 보여줍니다. `--apply` 를 붙이면 최신 태그로 다시 빌드합니다.
-- 설치된 `zcode` 명령도 하루에 한 번만(캐시: `~/.zcode-cli`) 확인해서, 새 ZCode 버전이 출시되었으면 "zcode-unofficial-standalone-cli 업데이트가 필요하다"는 알림을 출력하고 CLI를 정상 시작합니다. 확인 요청은 4초 제한이 있고 네트워크 실패 시 조용히 넘어가므로 작업을 막지 않습니다.
+- 설치된 `zcode` 명령도 하루에 한 번만(캐시: `~/.zcode-cli`) 확인해서, 새 ZCode 버전이 출시되었으면 "zcode-cli-install-helper 업데이트가 필요하다"는 알림을 출력하고 CLI를 정상 시작합니다. 확인 요청은 4초 제한이 있고 네트워크 실패 시 조용히 넘어가므로 작업을 막지 않습니다.
 
 설치 후 구조:
 

@@ -1,12 +1,12 @@
-# ZUSC: zcode-unofficial-standalone-cli
+# zcode-cli-install-helper
 
-**Z**code **U**nofficial **S**tandalone **C**LI.
+A community install helper for the **official ZCode CLI**: it builds Z.AI's open-source ZCode CLI/TUI from the official source and installs it as the `zcode` command. Not the desktop app, and not a fork.
 
 ![ZCode CLI welcome screen, GLM-5.3 running with a GLM Coding Plan account](docs/images/tui-welcome.png)
 
-> **Unofficial.** This project is not affiliated with or endorsed by Z.AI.
+> **Independent project.** The `zcode` you get is the official CLI, built from [zai-org/ZCode](https://github.com/zai-org/ZCode) (Apache-2.0) with the official build command. Only this install helper is a community project, not affiliated with or endorsed by Z.AI.
 
-Installs the official ZCode CLI/TUI as the `zcode` command: a standalone terminal harness for Z.ai GLM models such as GLM-5.3, usable with a GLM Coding Plan subscription. It builds the official source of [zai-org/ZCode](https://github.com/zai-org/ZCode) (Apache-2.0) with the official build command. Z.AI currently distributes ZCode as a desktop app only; the CLI source is public but requires monorepo build knowledge. This tool fills that gap.
+ZCode is a standalone terminal harness for Z.ai GLM models such as GLM-5.3, usable with a GLM Coding Plan subscription. Z.AI currently distributes it as a desktop app only; the CLI source is public but requires monorepo build knowledge. This helper fills that gap.
 
 [한국어 문서 (docs/README.ko.md)](docs/README.ko.md)
 
@@ -71,16 +71,16 @@ What this means in practice:
 With git:
 
 ```bash
-git clone https://github.com/dooee/zcode-unofficial-standalone-cli.git
-cd zcode-unofficial-standalone-cli
+git clone https://github.com/dooee/zcode-cli-install-helper.git
+cd zcode-cli-install-helper
 ./install.sh
 ```
 
 Without git (ZIP download): open this repository on GitHub, click the green **Code** button and choose **Download ZIP**, then extract it and run the installer (`unzip` ships with macOS, or use any archive tool):
 
 ```bash
-unzip zcode-unofficial-standalone-cli-main.zip
-cd zcode-unofficial-standalone-cli-main
+unzip zcode-cli-install-helper-main.zip
+cd zcode-cli-install-helper-main
 ./install.sh
 ```
 
@@ -118,7 +118,7 @@ Two version lines exist on purpose:
 Two mechanisms, both notification first and execution only on request:
 
 - `zcode-update` shows the installed tag versus the newest official tag. With `--apply` it rebuilds with the newer tag.
-- The installed `zcode` command also checks at most once a day (cache under `~/.zcode-cli`). When a new ZCode version has been released it prints a notice saying zcode-unofficial-standalone-cli needs an update, then starts the CLI normally. The check has a 4 second timeout and stays silent on network failure, so it never blocks your work.
+- The installed `zcode` command also checks at most once a day (cache under `~/.zcode-cli`). When a new ZCode version has been released it prints a notice saying zcode-cli-install-helper needs an update, then starts the CLI normally. The check has a 4 second timeout and stays silent on network failure, so it never blocks your work.
 
 Layout after install:
 
